@@ -26,4 +26,8 @@ class Robot
     @position.move_to(@direction)
   end
 
+  def to_s
+    "#@position #{@direction.to_s[0].upcase}"
+  end
+
 end

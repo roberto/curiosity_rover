@@ -64,4 +64,13 @@ describe Robot do
       @robot.direction.must_equal @old_direction
     end
   end
+
+  describe "to_s" do
+    before do
+      @robot = Robot.new(Position.new(7,10), :west)
+    end
+    it "must return position and direction" do
+      @robot.to_s.must_equal "7 10 W"
+    end
+  end
 end
