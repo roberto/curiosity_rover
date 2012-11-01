@@ -19,6 +19,20 @@ describe Robot do
     end
   end
 
+  describe "turn_right" do
+    must_turn_right(from: :north, to: :east)
+    must_turn_right(from: :east,  to: :south)
+    must_turn_right(from: :south, to: :west)
+    must_turn_right(from: :west,  to: :north)
+  end
+
+  describe "turn_left" do
+    must_turn_left(from: :north, to: :west)
+    must_turn_left(from: :west,  to: :south)
+    must_turn_left(from: :south, to: :east)
+    must_turn_left(from: :east,  to: :north)
+  end
+
   describe "teleport" do
     before do
       @old_position = Position.new(1,2)
@@ -37,7 +51,4 @@ describe Robot do
       @robot.direction.must_equal @old_direction
     end
   end
-
-
-
 end
