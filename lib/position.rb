@@ -18,4 +18,8 @@ class Position
     self.x == other.x && self.y == other.y
   end
 
+  def to_s
+    "#@x #@y"
+  end
+
 end

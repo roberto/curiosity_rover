@@ -71,4 +71,14 @@ describe Position do
       end
     end
   end
+
+  describe "to_s" do
+    before do
+      @position = Position.new(3,5)
+    end
+
+    it "must return x and y" do
+      @position.to_s.must_equal "3 5"
+    end
+  end
 end
