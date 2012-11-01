@@ -33,6 +33,19 @@ describe Robot do
     must_turn_left(from: :east,  to: :north)
   end
 
+  describe "move_forward" do
+    before do
+      @position = MiniTest::Mock.new
+      @robot = Robot.new(@position, :north)
+    end
+
+    it "must call position.move_to with direction as argument" do
+      @position.expect :move_to, ret = nil, args = [:north]
+      @robot.move_forward
+      @position.verify
+    end
+  end
+
   describe "teleport" do
     before do
       @old_position = Position.new(1,2)

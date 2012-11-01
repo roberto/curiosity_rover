@@ -22,6 +22,8 @@ class Robot
     @direction = DIRECTIONS[DIRECTIONS.index(@direction) - 1]
   end
 
-
+  def move_forward
+    @position.move_to(@direction)
+  end
 
 end
