@@ -1,9 +1,12 @@
 require 'minitest/autorun'
 require_relative 'support/factories'
+require_relative 'support/must_turn_helper'
 
 module MiniTest
   class Spec
     include Factories
+    include MustTurnHelper
+
     class << self
       alias_method :context, :describe
     end
