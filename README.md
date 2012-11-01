@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/roberto/curiosity_rover.png)](http://travis-ci.org/roberto/curiosity_rover)
+
 Sistema usado pela NASA para controlar o pirata curioso.
 
 
