@@ -105,6 +105,20 @@ describe Position do
     end
   end
 
+  describe "valid?" do
+    before do
+      @position = Position.new(1,1)
+      @area = MiniTest::Mock.new
+    end
+    it "must use area to validate it" do
+      @area.expect :inside?, true, [@position]
+      Area.stub :instance, @area do
+        @position.valid?
+      end
+      @area.verify
+    end
+  end
+
   describe "to_s" do
     before do
       @position = Position.new(3,5)

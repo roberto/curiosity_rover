@@ -19,7 +19,7 @@ class Position
   end
 
   def valid?
-    Area.instance.inside?(self)
+    area.inside?(self)
   end
 
   def ==(other)
@@ -38,6 +38,10 @@ class Position
 
   def rollback
     @x, @y = @_x, @_y
+  end
+
+  def area
+    Area.instance
   end
 
 end
