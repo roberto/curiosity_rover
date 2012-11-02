@@ -3,7 +3,7 @@ require_relative 'area'
 class Position
   attr_reader :x, :y
 
-  def initialize(x,y)
+  def initialize(x, y)
     @x, @y = x.to_i, y.to_i
   end
 

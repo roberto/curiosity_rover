@@ -5,7 +5,7 @@ describe Robot do
   before do
     Area.instance.setup(20,20)
   end
-  
+
   describe "constructor" do
     before do
       @position = Position.new(3,5)

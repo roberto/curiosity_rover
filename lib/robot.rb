@@ -1,7 +1,6 @@
 require_relative 'position'
 
 class Robot
-  
   DIRECTIONS = [:north, :east, :south, :west]
 
   attr_reader :direction, :position

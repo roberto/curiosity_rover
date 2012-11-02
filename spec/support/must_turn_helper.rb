@@ -17,7 +17,7 @@ module MustTurnHelper
       end
     end
 
-    def must_turn(params = {from: nil, to: nil}, &block)
+    def must_turn(params = { from: nil, to: nil }, &block)
       context "pointing #{params[:from]}" do
         before do
           @robot = Robot.new(Position.new(1,1), params[:from])

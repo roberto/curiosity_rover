@@ -5,7 +5,7 @@ require 'strscan'
 class MissionParser
   attr_reader :robot
 
-  DIRECTIONS = {"N" => :north, "S" => :south, "W" => :west, "E" => :east}
+  DIRECTIONS = { "N" => :north, "S" => :south, "W" => :west, "E" => :east }
 
   def initialize(input)
     @lines = input.lines
@@ -49,7 +49,7 @@ class MissionParser
 
   def parse_teleport(line)
     line.scan(/T\s(\d+)\s(\d+)/) do |x, y|
-      @robot.teleport(Position.new(x,y))
+      @robot.teleport(Position.new(x, y))
     end
   end
 end

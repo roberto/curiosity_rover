@@ -6,7 +6,7 @@ describe Area do
     @area = Area.instance
   end
   it "must be singleton" do
-    @area.must_be_kind_of Singleton 
+    @area.must_be_kind_of Singleton
   end
   it "must have width" do
     @area.must_respond_to :width
@@ -64,4 +64,3 @@ describe Area do
     end
   end
 end
-
