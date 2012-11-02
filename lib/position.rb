@@ -22,4 +22,14 @@ class Position
     "#@x #@y"
   end
 
+  class << self
+    def setup_boundary(x, y)
+      @@boundary = Position.new(x,y)
+    end
+
+    def boundary
+      @@boundary ||= nil
+    end
+  end
+
 end

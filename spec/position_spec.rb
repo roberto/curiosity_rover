@@ -98,4 +98,11 @@ describe Position do
       @position.to_s.must_equal "3 5"
     end
   end
+
+  describe "setup_boundary" do
+    it "must instantiate Position with passed args" do 
+      Position.setup_boundary(14,10)
+      Position.boundary.must_equal Position.new(14,10)
+    end
+  end
 end
