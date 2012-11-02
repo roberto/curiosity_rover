@@ -10,4 +10,5 @@ Observações:
 * No desenvolvimento utilizei:
   * guard
   * bundler
+  * simplecov
 
