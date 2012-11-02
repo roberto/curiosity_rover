@@ -3,18 +3,34 @@ require_relative '../lib/position'
 
 describe Position do
   describe "constructor" do
-    before do
-      @x = 12
-      @y = 15
-      @position = Position.new(@x, @y)
+    context "args as numbers" do
+      before do
+        @x, @y = 12, 15
+        @position = Position.new(@x, @y)
+      end
+
+      it "must setup x" do
+        @position.x.must_equal @x
+      end
+
+      it "must setup x" do
+        @position.y.must_equal @y
+      end
     end
 
-    it "must setup x" do
-      @position.x.must_equal @x
-    end
+    context "args as String" do
+      before do
+        @x, @y = "11", "31"
+        @position = Position.new(@x, @y)
+      end
 
-    it "must setup x" do
-      @position.y.must_equal @y
+      it "must convert x to integer" do
+        @position.x.must_equal 11
+      end
+
+      it "must convert y to integer" do
+        @position.y.must_equal 31
+      end
     end
   end
 
@@ -70,6 +86,7 @@ describe Position do
         @position.must_equal Position.new(9,10)
       end
     end
+
   end
 
   describe "to_s" do
