@@ -55,38 +55,54 @@ describe Position do
   end
 
   describe "move_to(direction)" do
-    before do
-      @position = Position.new(10, 10)
-    end
+    context "inbound" do
+      before do
+        Area.instance.setup(20,20)
+        @position = Position.new(10, 10)
+      end
 
-    context "direction is north" do
-      it "must increment y" do
-        @position.move_to(:north)
-        @position.must_equal Position.new(10,11)
+      context "direction is north" do
+        it "must increment y" do
+          @position.move_to(:north)
+          @position.must_equal Position.new(10,11)
+        end
+      end
+
+      context "direction is south" do
+        it "must decrement y" do
+          @position.move_to(:south)
+          @position.must_equal Position.new(10,9)
+        end
+      end
+
+      context "direction is east" do
+        it "must increment x" do
+          @position.move_to(:east)
+          @position.must_equal Position.new(11,10)
+        end
+      end
+
+      context "direction is west" do
+        it "must decrement x" do
+          @position.move_to(:west)
+          @position.must_equal Position.new(9,10)
+        end
       end
     end
 
-    context "direction is south" do
-      it "must decrement y" do
-        @position.move_to(:south)
-        @position.must_equal Position.new(10,9)
+    context "outbound" do
+      context "direction north" do
+        before do
+          Area.instance.setup(4,5)
+          @old_position = Position.new(1,5)
+          @position = @old_position.dup
+        end
+        it "must maintain current position" do
+          @position.move_to(:north)
+          @position.must_equal @old_position
+        end
       end
     end
-
-    context "direction is east" do
-      it "must increment x" do
-        @position.move_to(:east)
-        @position.must_equal Position.new(11,10)
-      end
-    end
-
-    context "direction is west" do
-      it "must decrement x" do
-        @position.move_to(:west)
-        @position.must_equal Position.new(9,10)
-      end
-    end
-
   end
 
   describe "to_s" do
@@ -96,13 +112,6 @@ describe Position do
 
     it "must return x and y" do
       @position.to_s.must_equal "3 5"
-    end
-  end
-
-  describe "setup_boundary" do
-    it "must instantiate Position with passed args" do 
-      Position.setup_boundary(14,10)
-      Position.boundary.must_equal Position.new(14,10)
     end
   end
 end

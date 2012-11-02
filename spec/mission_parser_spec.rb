@@ -4,9 +4,14 @@ require_relative '../lib/mission_parser'
 describe MissionParser do
   describe "run" do
     context "receive boundaries" do
-      it "must setup x boundary" do
+      before do
         MissionParser.new("10 20\n").run
-        Position.boundary.must_equal Position.new(10,20)
+      end
+      it "must setup area width" do
+        Area.instance.width.must_equal 10
+      end
+      it "must setup area height" do
+        Area.instance.height.must_equal 20
       end
     end
 

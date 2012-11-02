@@ -11,7 +11,7 @@ class Robot
   end
 
   def teleport(new_position)
-    @position = new_position
+    @position = new_position if new_position.valid?
   end
 
   def turn_right

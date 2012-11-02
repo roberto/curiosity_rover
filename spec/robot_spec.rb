@@ -2,6 +2,9 @@ require_relative 'spec_helper'
 require_relative '../lib/robot'
 
 describe Robot do
+  before do
+    Area.instance.setup(20,20)
+  end
   
   describe "constructor" do
     before do
@@ -50,18 +53,34 @@ describe Robot do
     before do
       @old_position = Position.new(1,2)
       @old_direction = :south
-      @new_position = Position.new(4,10)
-      @robot = Robot.new(@old_position, @old_direction)
-
-      @robot.teleport(@new_position)
     end
 
-    it "must move robot to new position" do
-      @robot.position.must_equal @new_position
+    context "valid new position" do
+      before do
+        @new_position = Position.new(4,10)
+        @robot = Robot.new(@old_position, @old_direction)
+
+        @robot.teleport(@new_position)
+      end
+      it "must move robot to new position" do
+        @robot.position.must_equal @new_position
+      end
+
+      it "must keep same direction" do
+        @robot.direction.must_equal @old_direction
+      end
     end
 
-    it "must keep same direction" do
-      @robot.direction.must_equal @old_direction
+    context "invalid new position" do
+      before do
+        @new_position = Position.new(500,500)
+        @robot = Robot.new(@old_position, @old_direction)
+
+        @robot.teleport(@new_position)
+      end
+      it "must keep same position" do
+        @robot.position.must_equal @old_position
+      end
     end
   end
 

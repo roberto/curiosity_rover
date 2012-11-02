@@ -1,3 +1,5 @@
+require_relative 'area'
+
 class Position
   attr_reader :x, :y
 
@@ -6,12 +8,18 @@ class Position
   end
 
   def move_to(direction)
+    backup
     case direction
     when :north then @y+=1
     when :south then @y-=1
     when :east  then @x+=1
     when :west  then @x-=1
     end
+    rollback unless valid?
+  end
+
+  def valid?
+    Area.instance.inside?(self)
   end
 
   def ==(other)
@@ -22,14 +30,14 @@ class Position
     "#@x #@y"
   end
 
-  class << self
-    def setup_boundary(x, y)
-      @@boundary = Position.new(x,y)
-    end
+  private
 
-    def boundary
-      @@boundary ||= nil
-    end
+  def backup
+    @_x, @_y = @x, @y
+  end
+
+  def rollback
+    @x, @y = @_x, @_y
   end
 
 end

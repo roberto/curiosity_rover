@@ -26,8 +26,8 @@ class MissionParser
   private
 
   def setup_boundary(line)
-    line.scan(/(\d+)\s(\d+)/) do |x, y|
-      Position.setup_boundary(x, y)
+    line.scan(/(\d+)\s(\d+)/) do |width, height|
+      Area.instance.setup(width, height)
     end
   end
 
