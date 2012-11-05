@@ -9,7 +9,7 @@ class Area
     self
   end
 
-  def inside?(position)
+  def include?(position)
     (0..width).include?(position.x) && (0..height).include?(position.y)
   end
 

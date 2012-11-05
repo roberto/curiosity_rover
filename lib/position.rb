@@ -17,7 +17,7 @@ class Position
   end
 
   def valid?
-    area.inside?(self)
+    area.include?(self)
   end
 
   def ==(other)

@@ -26,36 +26,36 @@ describe Area do
     end
   end
 
-  describe "inside?" do
+  describe "include?" do
     let(:area){ Area.instance.setup(3,5) }
 
-    context "x and y inside" do
+    context "x and y include" do
       it "must return true" do
-        area.inside?(Position.new(2,2)).must_equal true
+        area.include?(Position.new(2,2)).must_equal true
       end
     end
 
     context "x greater than width" do
       it "must return false" do
-        area.inside?(Position.new(6,5)).must_equal false
+        area.include?(Position.new(6,5)).must_equal false
       end
     end
 
     context "y greater than height" do
       it "must return false" do
-        area.inside?(Position.new(0,6)).must_equal false
+        area.include?(Position.new(0,6)).must_equal false
       end
     end
 
     context "negative x" do
       it "must return false" do
-        area.inside?(Position.new(-1,3)).must_equal false
+        area.include?(Position.new(-1,3)).must_equal false
       end
     end
 
     context "negative y" do
       it "must return false" do
-        area.inside?(Position.new(2,-2)).must_equal false
+        area.include?(Position.new(2,-2)).must_equal false
       end
     end
   end

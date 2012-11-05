@@ -113,7 +113,7 @@ describe Position do
     let(:position) { Position.new(1,1) }
 
     it "must use area to validate it" do
-      area.expect :inside?, true, [position]
+      area.expect :include?, true, [position]
       Area.stub :instance, area do
         position.valid?
       end
