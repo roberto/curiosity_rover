@@ -14,7 +14,7 @@ make
 Após isso, para rodar os testes:
 
 ```
-bundle
+bundle install
 bundle exec rake
 ```
 

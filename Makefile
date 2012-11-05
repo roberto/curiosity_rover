@@ -1,2 +1,2 @@
 all:
-	ruby bin/simulation.rb data/input.txt
+	./bin/simulation data/input.txt
