@@ -19,18 +19,20 @@ module MustTurnHelper
 
     def must_turn(params = { from: nil, to: nil }, &block)
       context "pointing #{params[:from]}" do
+        let(:old_position) { Position.new(1,1) }
+        let(:robot) do
+          Robot.new(old_position, params[:from])
+        end
         before do
-          @robot = Robot.new(Position.new(1,1), params[:from])
-          @old_position = @robot.position
-          block.call(@robot)
+          block.call(robot)
         end
 
         it "must change direction to #{params[:to]}" do
-          @robot.direction.must_equal params[:to]
+          robot.direction.must_equal params[:to]
         end
 
         it "must not change position" do
-          @robot.position.must_equal @old_position
+          robot.position.must_equal old_position
         end
       end
     end

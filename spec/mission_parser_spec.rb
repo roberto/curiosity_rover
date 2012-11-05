@@ -15,44 +15,40 @@ describe MissionParser do
     end
 
     context "receive robot coordinates" do
-      before do
-        @parser = MissionParser.new("10 20\n5 15 S\n")
-        @parser.run
-      end
+      let(:parser) { MissionParser.new("10 20\n5 15 S\n") }
+
       it "must setup robot position" do
-        @parser.robot.position.must_equal Position.new(5, 15)
+        parser.run
+        parser.robot.position.must_equal Position.new(5, 15)
       end
 
       it "must setup robot direction" do
-        @parser.robot.direction.must_equal :south
+        parser.run
+        parser.robot.direction.must_equal :south
       end
     end
 
     context "input with instructions" do
-      before do
-        @parser = MissionParser.new("10 10\n2 5 N\nLLRRMMMRLRMMM")
-      end
+      let(:parser) { MissionParser.new("10 10\n2 5 N\nLLRRMMMRLRMMM") }
+
       it "must return robot at 5 8 E" do
-        @parser.run.to_s.must_equal "5 8 E"
+        parser.run.to_s.must_equal "5 8 E"
       end
     end
 
     context "input with teleport" do
-      before do
-        @parser = MissionParser.new("10 10\n10 1 S\nT 2 5")
-      end
+      let(:parser) { MissionParser.new("10 10\n10 1 S\nT 2 5") }
+
       it "must robot at 2 5 S" do
-        @parser.run.to_s.must_equal "2 5 S"
+        parser.run.to_s.must_equal "2 5 S"
       end
     end
 
     context "input with teleport and instructions" do
-      before do
-        @parser = MissionParser.new("10 10\n2 5 N\nLLRRMMMRLRMMM\nT 1 3\nLLRRMMRMMRM")
-      end
+      let(:parser) { MissionParser.new("10 10\n2 5 N\nLLRRMMMRLRMMM\nT 1 3\nLLRRMMRMMRM") }
 
       it "must robot at 2 1 W" do
-        @parser.run.to_s.must_equal "2 1 W"
+        parser.run.to_s.must_equal "2 1 W"
       end
     end
   end

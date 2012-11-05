@@ -9,15 +9,15 @@ describe Robot do
     before do
       @position = Position.new(3,5)
       @direction = :north
-      @robot = Robot.new(@position, @direction)
     end
+    let(:robot) { Robot.new(@position, @direction) }
 
     it "must setup position" do
-      @robot.position.must_equal @position
+      robot.position.must_equal @position
     end
 
     it "must setup direction" do
-      @robot.direction.must_equal @direction
+      robot.direction.must_equal @direction
     end
   end
 
@@ -36,59 +36,52 @@ describe Robot do
   end
 
   describe "move_forward" do
-    before do
-      @position = MiniTest::Mock.new
-      @robot = Robot.new(@position, :north)
-    end
+    let(:position) { MiniTest::Mock.new }
+    let(:current_direction) { :north }
+    let(:robot) { Robot.new(position, :north) }
 
-    it "must call position.move_to with direction as argument" do
-      @position.expect :move_to, ret = nil, args = [:north]
-      @robot.move_forward
-      @position.verify
+    it "must call position.move_to with current direction as argument" do
+      position.expect :move_to, ret = nil, args = [current_direction]
+      robot.move_forward
+      position.verify
     end
   end
 
   describe "teleport" do
-    before do
-      @old_position = Position.new(1,2)
-      @old_direction = :south
-    end
+    let(:old_position)  { Position.new(1,2) }
+    let(:old_direction) { :south }
+    let(:robot)         { Robot.new(old_position, old_direction) }
 
     context "valid new position" do
-      before do
-        @new_position = Position.new(4,10)
-        @robot = Robot.new(@old_position, @old_direction)
+      let(:new_position) { Position.new(4, 10) }
 
-        @robot.teleport(@new_position)
-      end
       it "must move robot to new position" do
-        @robot.position.must_equal @new_position
+        robot.teleport(new_position)
+        robot.position.must_equal new_position
       end
 
       it "must keep same direction" do
-        @robot.direction.must_equal @old_direction
+        robot.teleport(new_position)
+        robot.direction.must_equal old_direction
       end
     end
 
     context "invalid new position" do
-      before do
-        @new_position = Position.new(500,500)
-        @robot = Robot.new(@old_position, @old_direction)
+      let(:new_position) { Position.new(500, 500) }
 
-        @robot.teleport(@new_position)
-      end
       it "must keep same position" do
-        @robot.position.must_equal @old_position
+        robot.teleport(new_position)
+        robot.position.must_equal old_position
       end
     end
   end
 
   describe "to_s" do
-    before do
-      @robot = Robot.new(Position.new(7,10), :west)
+    let(:robot) do
+      Robot.new(Position.new(7,10), :west)
     end
     it "must return position and direction" do
-      @robot.to_s.must_equal "7 10 W"
+      robot.to_s.must_equal "7 10 W"
     end
   end
 end

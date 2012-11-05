@@ -1,17 +1,16 @@
 require_relative 'spec_helper'
 
 describe Area do
-  before do
-    @area = Area.instance
-  end
+  let(:area) { Area.instance }
+
   it "must be singleton" do
-    @area.must_be_kind_of Singleton
+    area.must_be_kind_of Singleton
   end
   it "must have width" do
-    @area.must_respond_to :width
+    area.must_respond_to :width
   end
   it "must have height" do
-    @area.must_respond_to :height
+    area.must_respond_to :height
   end
 
   describe "setup" do
@@ -28,37 +27,35 @@ describe Area do
   end
 
   describe "inside?" do
-    before do
-      @area = Area.instance.setup(3,5)
-    end
+    let(:area){ Area.instance.setup(3,5) }
 
     context "x and y inside" do
       it "must return true" do
-        @area.inside?(Position.new(2,2)).must_equal true
+        area.inside?(Position.new(2,2)).must_equal true
       end
     end
 
     context "x greater than width" do
       it "must return false" do
-        @area.inside?(Position.new(6,5)).must_equal false
+        area.inside?(Position.new(6,5)).must_equal false
       end
     end
 
     context "y greater than height" do
       it "must return false" do
-        @area.inside?(Position.new(0,6)).must_equal false
+        area.inside?(Position.new(0,6)).must_equal false
       end
     end
 
     context "negative x" do
       it "must return false" do
-        @area.inside?(Position.new(-1,3)).must_equal false
+        area.inside?(Position.new(-1,3)).must_equal false
       end
     end
 
     context "negative y" do
       it "must return false" do
-        @area.inside?(Position.new(2,-2)).must_equal false
+        area.inside?(Position.new(2,-2)).must_equal false
       end
     end
   end
