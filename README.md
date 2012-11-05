@@ -2,9 +2,6 @@
 
 Sistema usado pela NASA para controlar o pirata curioso.
 
-Observações:
-* Utilizei MacOSX 10.8 no desenvolvimento, porém dependente da plataforma apenas as gems `terminal-notifier-guard`, `rb-fsevent` utilizadas nos testes.
-
 Para executar a simulação:
 
 ```
@@ -18,12 +15,14 @@ Após isso, para rodar os testes:
 
 ```
 bundle
-rake
+bundle exec rake
 ```
 
-Com cobertura:
+Utilize `bundle install --without mac` caso não esteja utilizando MacOSX.
+
+Para cobertura de testes:
 
 ```
-coverage=ON rake
+coverage=ON bundle exec rake
 open coverage/index.html
 ```
