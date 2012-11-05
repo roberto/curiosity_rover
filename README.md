@@ -2,13 +2,28 @@
 
 Sistema usado pela NASA para controlar o pirata curioso.
 
-
 Observações:
+* Utilizei MacOSX 10.8 no desenvolvimento, porém dependente da plataforma apenas as gems `terminal-notifier-guard`, `rb-fsevent` utilizadas nos testes.
 
-* Evitei qualquer dependência.
-* Não utilizei features mais novas do minitest para evitar problemas com o Ruby 1.9.2.
-* No desenvolvimento utilizei:
-  * guard
-  * bundler
-  * simplecov
+Para executar a simulação:
 
+```
+git clone git@github.com:roberto/curiosity_rover.git
+cd curiosity_rover
+./configure
+make
+```
+
+Após isso, para rodar os testes:
+
+```
+bundle
+rake
+```
+
+Com cobertura:
+
+```
+coverage=ON rake
+open coverage/index.html
+```
