@@ -1,5 +1,4 @@
 require_relative 'spec_helper'
-require_relative '../lib/robot'
 
 describe Robot do
   before do

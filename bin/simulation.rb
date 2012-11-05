@@ -1,3 +1,3 @@
-require_relative '../lib/mission_parser'
+require_relative '../lib/curiosity_rover'
 
 puts MissionParser.new(ARGF).run

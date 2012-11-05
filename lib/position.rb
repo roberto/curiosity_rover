@@ -1,5 +1,3 @@
-require_relative 'area'
-
 class Position
   attr_reader :x, :y
 

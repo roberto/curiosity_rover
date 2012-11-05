@@ -1,5 +1,3 @@
-require_relative 'position'
-
 class Robot
   DIRECTIONS = [:north, :east, :south, :west]
 

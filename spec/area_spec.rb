@@ -1,5 +1,4 @@
 require_relative 'spec_helper'
-require_relative '../lib/area'
 
 describe Area do
   before do

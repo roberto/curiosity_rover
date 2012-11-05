@@ -1,5 +1,4 @@
 require_relative 'spec_helper'
-require_relative '../lib/position'
 
 describe Position do
   describe "constructor" do

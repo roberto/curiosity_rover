@@ -1,5 +1,3 @@
-require_relative 'position'
-require_relative 'robot'
 require 'strscan'
 
 class MissionParser

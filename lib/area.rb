@@ -1,5 +1,4 @@
 require 'singleton'
-require_relative 'position'
 
 class Area
   include Singleton

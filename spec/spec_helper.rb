@@ -7,6 +7,7 @@ end
 
 require 'minitest/autorun'
 require_relative 'support/must_turn_helper'
+require_relative '../lib/curiosity_rover'
 
 module MiniTest
   class Spec

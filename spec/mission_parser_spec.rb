@@ -1,5 +1,4 @@
 require_relative 'spec_helper'
-require_relative '../lib/mission_parser'
 
 describe MissionParser do
   describe "run" do
