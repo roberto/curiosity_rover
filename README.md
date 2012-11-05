@@ -5,7 +5,7 @@ Sistema usado pela NASA para controlar o pirata curioso.
 Para executar a simulação:
 
 ```
-git clone git@github.com:roberto/curiosity_rover.git
+git clone git://github.com/roberto/curiosity_rover.git
 cd curiosity_rover
 ./configure
 make
