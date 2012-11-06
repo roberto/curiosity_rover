@@ -1,5 +1,3 @@
-require 'strscan'
-
 class MissionParser
   attr_reader :robot
 
